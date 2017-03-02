@@ -35,6 +35,11 @@ app.set('view engine', 'jsx')
 app.engine('jsx', expressReactView.createEngine({ beautify: true }))
 
 /**
+ * MaterialUI Tap Event Plugin Injection
+ */
+require('react-tap-event-plugin')()
+
+/**
  * Service Intro
  */
 app.get('/', function (req, res) {
