@@ -4,15 +4,18 @@
  * Dependencies
  * @ignore
  */
+const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const compression = require('compression')
+const expressReactView = require('express-react-views')
 
 /**
  * Module Dependencies
  * @ignore
  */
 const pkg = require('./package.json')
+const cwd = process.cwd()
 
 /**
  * App
@@ -27,6 +30,10 @@ app.use(compression())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.set('views', path.join(cwd, 'app', 'views'))
+app.set('view engine', 'jsx')
+app.engine('jsx', expressReactView.createEngine({ beautify: true }))
+
 /**
  * Service Intro
  */
@@ -36,6 +43,10 @@ app.get('/', function (req, res) {
     description: pkg.description,
     version: pkg.version
   })
+})
+
+app.get('/hello', function (req, res) {
+  res.render('index', { name: 'Greg' })
 })
 
 /**

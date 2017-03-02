@@ -1,13 +1,18 @@
 {
   "name": "react-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "A test react app with material-ui",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.17.0",
     "bunyan": "^1.8.5",
     "compression": "^1.6.2",
-    "express": "^4.15.0"
+    "express": "^4.15.0",
+    "express-react-views": "^0.10.2",
+    "material-ui": "^0.17.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {},
   "scripts": {
