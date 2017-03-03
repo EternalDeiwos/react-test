@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
-        <h1 style={{ fontFamily: 'Roberto' }}>Hello { this.props.name }!</h1>
+        <h1 style={{ fontFamily: 'Roboto' }}>Hello { this.props.name }!</h1>
       </div>
     )
   }
