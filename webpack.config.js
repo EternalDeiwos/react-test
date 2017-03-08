@@ -11,7 +11,7 @@ module.exports = {
 
   entry: {
     app: ['./js/index.jsx'],
-    common: ['react', 'react-dom']
+    common: ['react', 'react-dom', 'moment']
   },
 
   output: {
