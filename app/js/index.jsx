@@ -49,6 +49,19 @@ class App extends React.Component {
   test () {
     let { email } = this.state
     alert(email)
+
+    fetch('http://localhost:3000/subscribe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      mode: 'no-cors',
+      body: JSON.stringify({email})
+    }).then(() => {
+      alert('success')
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
   render () {
