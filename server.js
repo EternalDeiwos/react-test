@@ -9,6 +9,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const compression = require('compression')
 const expressReactView = require('express-react-views')
+const yuno = require('yunodb')
 
 /**
  * Module Dependencies
@@ -22,6 +23,18 @@ const cwd = process.cwd()
  * @ignore
  */
 const app = express()
+
+/**
+ * Database
+ * @ignore
+ */
+let db = yuno({
+  location: './db',
+  keyField: 'email',
+  indexMap: ['text']
+}, (err, dbHandle) => {
+  db = dbHandle
+})
 
 /**
  * Setup
@@ -50,8 +63,33 @@ app.get('/', function (req, res) {
   })
 })
 
-app.get('/hello', function (req, res) {
-  res.render('index', { name: 'Greg' })
+// app.get('/hello', function (req, res) {
+//   res.render('index', { name: 'Greg' })
+// })
+app.post('/subscribe', function (req, res) {
+  let { body } = req
+  res.set({
+    'Access-Control-Allow-Origin': '*'
+  })
+  console.log(body)
+
+  if (!body) {
+    res.sendStatus(400)
+  } else {
+    let { email } = body
+
+    if (!email) {
+      res.sendStatus(400)
+    } else {
+      db.add({ email }, err => {
+        if (err) {
+          res.sendStatus(400)
+        } else {
+          res.status(200).json(body)
+        }
+      })
+    }
+  }
 })
 
 /**
