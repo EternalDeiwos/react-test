@@ -1,0 +1,15 @@
+{
+  "parser": "espree",
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "plugins": [
+    "react"
+  ]
+}
