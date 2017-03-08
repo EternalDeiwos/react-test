@@ -1,0 +1,33 @@
+
+import React from 'react'
+
+class Timer extends React.Component {
+
+  constructor (props) {
+    super(props)
+    this.state = { seconds: 0 }
+  }
+
+  tick () {
+    let state = this.state
+    this.setState({
+      seconds: state.seconds + 1
+    })
+  }
+
+  componentDidMount () {
+    this.interval = setInterval(() => this.tick(), 1000)
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.interval)
+  }
+
+  render () {
+    return (
+      <div>Seconds Elapsed: {this.state.seconds}</div>
+    )
+  }
+}
+
+export default Timer

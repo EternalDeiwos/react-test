@@ -6,6 +6,7 @@
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Timer from './Timer.jsx'
 
 /**
  * App
@@ -16,6 +17,7 @@ class App extends React.Component {
     return (
       <div>
         <h1 style={{ fontFamily: 'Roboto' }}>Hello { this.props.name }!</h1>
+        <Timer />
       </div>
     )
   }
@@ -30,5 +32,3 @@ ReactDOM.render(
   <App name="Greg" />,
   document.getElementById('app')
 )
-
-console.log('Test')
