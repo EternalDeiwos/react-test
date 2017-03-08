@@ -6,7 +6,12 @@
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Timer from './Timer.jsx'
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+
+injectTapEventPlugin()
 
 /**
  * App
@@ -15,10 +20,13 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
-        <h1 style={{ fontFamily: 'Roboto' }}>Hello { this.props.name }!</h1>
-        <Timer />
-      </div>
+      <Card>
+        <CardHeader title="Hello World!" subtitle="Test" />
+        <CardText>
+          <h1 style={{ fontFamily: 'Roboto' }}>Hello { this.props.name }!</h1>
+          <Timer />
+        </CardText>
+      </Card>
     )
   }
 
@@ -29,6 +37,8 @@ class App extends React.Component {
  * @ignore
  */
 ReactDOM.render(
-  <App name="Greg" />,
+  <MuiThemeProvider>
+    <App name="Greg" />
+  </MuiThemeProvider>,
   document.getElementById('app')
 )
