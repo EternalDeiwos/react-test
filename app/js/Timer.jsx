@@ -1,22 +1,32 @@
-
+import moment from 'moment'
+//import 'moment-duration-format'
 import React from 'react'
+
 
 class Timer extends React.Component {
 
   constructor (props) {
     super(props)
-    this.state = { seconds: 0 }
+    let hvzStartDate = moment("20170621", "YYYYMMDD")
+    let dateTimeFormat = "DDD:HH:mm:ss"
+    this.state = { 
+      timeRemaining : moment(hvzStartDate.diff(moment())).format(dateTimeFormat), 
+      target: hvzStartDate, 
+      dateTimeFormat: dateTimeFormat,
+      interval: 1000  
+    }
   }
 
   tick () {
     let state = this.state
+    let difference = state.target.diff(moment())
     this.setState({
-      seconds: state.seconds + 1
+      timeRemaining:  moment(difference.valueOf()).format(state.dateTimeFormat),
     })
   }
 
   componentDidMount () {
-    this.interval = setInterval(() => this.tick(), 1000)
+    this.interval = setInterval(() => this.tick(), this.state.interval)
   }
 
   componentWillUnmount () {
@@ -25,7 +35,7 @@ class Timer extends React.Component {
 
   render () {
     return (
-      <div>Seconds Elapsed: {this.state.seconds}</div>
+      <div>Countdown: {this.state.timeRemaining}</div>
     )
   }
 }
