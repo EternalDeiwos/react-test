@@ -6,15 +6,18 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
     <style>
     html, body {
+      margin: 0;
       position: relative;
-      height: 100%;
-      min-height: 100%;
+      display: flex;
+      min-height: 100vh;
+      min-width: 100vw;
       font-family: Roboto;
-      flex: 1;
+      flex-direction: row;
+      align-items: center;
     }
     </style>
   </head>
   <body>
-    <div style="flex: 1;" id="app"></div>
+    <div style="flex: 1; min-height: 100%" id="app"></div>
   </body>
 </html>
