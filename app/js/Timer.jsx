@@ -7,26 +7,30 @@ class Timer extends React.Component {
 
   constructor (props) {
     super(props)
-    let hvzStartDate = moment("20170621", "YYYYMMDD")
-    let dateTimeFormat = "DDD:HH:mm:ss"
-    this.state = { 
-      timeRemaining : moment(hvzStartDate.diff(moment())).format(dateTimeFormat), 
-      target: hvzStartDate, 
-      dateTimeFormat: dateTimeFormat,
-      interval: 1000  
+
+    let target = moment("20170621", "YYYYMMDD")
+    let format = "DDD:HH:mm:ss"
+
+    this.state = {
+      timeRemaining : moment(target.diff(moment())).format(format),
+      interval: 1000,
+      target,
+      format
     }
   }
 
   tick () {
-    let state = this.state
-    let difference = state.target.diff(moment())
+    let { target, format } = this.state
+    let difference = target.diff(moment())
+
     this.setState({
-      timeRemaining:  moment(difference.valueOf()).format(state.dateTimeFormat),
+      timeRemaining: moment(difference.valueOf()).format(format),
     })
   }
 
   componentDidMount () {
-    this.interval = setInterval(() => this.tick(), this.state.interval)
+    let { interval } = this.state
+    this.interval = setInterval(() => this.tick(), interval)
   }
 
   componentWillUnmount () {
@@ -34,8 +38,10 @@ class Timer extends React.Component {
   }
 
   render () {
+    let { timeRemaining } = this.state
+
     return (
-      <div>Countdown: {this.state.timeRemaining}</div>
+      <div>Countdown: {timeRemaining}</div>
     )
   }
 }
