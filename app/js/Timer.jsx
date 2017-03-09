@@ -1,7 +1,17 @@
+'use strict'
+
 import moment from 'moment'
-//import 'moment-duration-format'
 import React from 'react'
 
+const timerStyle = {
+  textAlign: 'center',
+  fontSize: '96px',
+  width: '600px',
+  padding: '20px',
+  margin: '20px',
+  borderStyle: 'solid',
+  borderWidth: '5px'
+}
 
 class Timer extends React.Component {
 
@@ -12,7 +22,7 @@ class Timer extends React.Component {
     let format = "DDD:HH:mm:ss"
 
     this.state = {
-      timeRemaining : moment(target.diff(moment())).format(format),
+      timeRemaining: moment(target.diff(moment())),
       interval: 1000,
       target,
       format
@@ -24,7 +34,7 @@ class Timer extends React.Component {
     let difference = target.diff(moment())
 
     this.setState({
-      timeRemaining: moment(difference.valueOf()).format(format),
+      timeRemaining: moment(difference.valueOf()),
     })
   }
 
@@ -38,11 +48,9 @@ class Timer extends React.Component {
   }
 
   render () {
-    let { timeRemaining } = this.state
+    let { timeRemaining, format } = this.state
 
-    return (
-      <div>Countdown: {timeRemaining}</div>
-    )
+    return <div style={timerStyle}>{timeRemaining.format(format)}</div>
   }
 }
 

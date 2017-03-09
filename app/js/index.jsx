@@ -19,7 +19,7 @@ injectTapEventPlugin()
 const style = {
   viewContainerStyle: {
     display: 'flex',
-    backgroundColor: 'powderblue',
+    // backgroundColor: 'powderblue',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
@@ -32,7 +32,7 @@ const style = {
     justifyContent: 'center',
     flexDirection: 'column',
 
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
     minHeight: '50vh',
     position: 'relative'
   },
@@ -46,8 +46,13 @@ const ViewContainer = (props) => {
 
   return (
     <div style={viewParent}>
-      <div style={viewContainerStyle}>
-        {props.children}
+      <div >
+        <Card>
+          <CardHeader title="Humans vs. Zombies 2017 Mailing List Sign Up" />
+          <CardText style={viewContainerStyle}>
+            {props.children}
+          </CardText>
+        </Card>
       </div>
     </div>
   )
@@ -63,12 +68,12 @@ class App extends React.Component {
 
     return (
       <ViewContainer>
-        <h1>Test!</h1>
+        <Timer />
         <RaisedButton
+          primary="true"
           label="Sign Up"
           href="/login"
         />
-        <Timer />
       </ViewContainer>
     )
   }
