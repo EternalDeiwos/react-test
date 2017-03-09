@@ -68,7 +68,7 @@ app.get('/login/callback', function (req, res) {
         req.userinfo = userinfo
 
         return subs.subscribe({ userinfo, tokens })
-          ? res.redirect('/?subscribed=true')
+          ? res.redirect('/#/?subscribed=true')
           : res.sendStatus(400)
 
       }).catch(err => {
@@ -85,7 +85,7 @@ app.get('/unsubscribe', function (req, res) {
     let { query: { email } } = req
 
     return subs.unsubscribe(email)
-      ? res.redirect('/?unsubscribed=true')
+      ? res.redirect('/#/?unsubscribed=true')
       : res.sendStatus(404)
   } else {
     res.sendStatus(400)
@@ -95,6 +95,6 @@ app.get('/unsubscribe', function (req, res) {
 /**
  * Listen
  */
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Listening on port ${process.env.PORT || 3000}`)
+app.listen(process.env.PORT || 2456, () => {
+  console.log(`Listening on port ${process.env.PORT || 2456}`)
 })

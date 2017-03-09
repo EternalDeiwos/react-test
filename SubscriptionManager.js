@@ -71,6 +71,8 @@ class SubscriptionManager {
         return false
       }
     }
+
+    return false
   }
 
   unsubscribe (email) {
