@@ -11,7 +11,7 @@ module.exports = {
 
   entry: {
     app: ['./js/index.jsx'],
-    common: ['react', 'react-dom', 'moment', 'material-ui']
+    common: ['react', 'react-dom', 'react-router', 'moment', 'material-ui']
   },
 
   output: {
