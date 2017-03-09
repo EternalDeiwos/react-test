@@ -32,10 +32,10 @@ class SubscriptionManager {
     try {
       let stats = fs.statSync(subsPath)
       if (!stats.isDirectory()) {
-        fs.mkdirSync(subsPath, 0o664)
+        fs.mkdirSync(subsPath, 0o775)
       }
     } catch (err) {
-      fs.mkdirSync(subsPath, 0o664)
+      fs.mkdirSync(subsPath, 0o775)
     }
   }
 
