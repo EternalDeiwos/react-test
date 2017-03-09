@@ -8,8 +8,8 @@ const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const compression = require('compression')
+const cors = require('cors')
 const expressReactView = require('express-react-views')
-const yuno = require('yunodb')
 
 /**
  * Module Dependencies
@@ -17,6 +17,8 @@ const yuno = require('yunodb')
  */
 const pkg = require('./package.json')
 const cwd = process.cwd()
+const OIDC = require('./OIDC')
+const SubscriptionManager = require('./SubscriptionManager')
 
 /**
  * App
@@ -25,70 +27,68 @@ const cwd = process.cwd()
 const app = express()
 
 /**
- * Database
- * @ignore
- */
-let db = yuno({
-  location: './db',
-  keyField: 'email',
-  indexMap: ['text']
-}, (err, dbHandle) => {
-  db = dbHandle
-})
-
-/**
  * Setup
  */
+const oidc = new OIDC(require('./config.json'))
+const subs = new SubscriptionManager()
+
+app.use(express.static('dist'))
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'DELETE'],
+  preflightContinue: false
+}))
 
-app.set('views', path.join(cwd, 'app', 'views'))
-app.set('view engine', 'jsx')
-app.engine('jsx', expressReactView.createEngine({ beautify: true }))
-
-/**
- * MaterialUI Tap Event Plugin Injection
- */
-require('react-tap-event-plugin')()
+app.use((req, res, next) => oidc.init(req, res, next))
 
 /**
- * Service Intro
+ * Login
  */
-app.get('/', function (req, res) {
-  res.status(200).json({
-    [pkg.name]: 'Welcome',
-    description: pkg.description,
-    version: pkg.version
-  })
+app.get('/login', function (req, res) {
+  res.redirect(req.anvil.authorizationUri())
 })
 
-// app.get('/hello', function (req, res) {
-//   res.render('index', { name: 'Greg' })
-// })
-app.post('/subscribe', function (req, res) {
-  let { body } = req
-  res.set({
-    'Access-Control-Allow-Origin': '*'
-  })
-  console.log(body)
+/**
+ * Callback
+ */
+app.get('/login/callback', function (req, res) {
+  let { query: params, anvil } = req
+  if (params && params.code) {
 
-  if (!body) {
-    res.sendStatus(400)
-  } else {
-    let { email } = body
+    // Fetch and decode tokens
+    anvil.token({ code: params.code }).then(token => {
+        req.tokens = token
+        return anvil.userInfo({ token: token.access_token })
 
-    if (!email) {
-      res.sendStatus(400)
-    } else {
-      db.add({ email }, err => {
-        if (err) {
-          res.sendStatus(400)
-        } else {
-          res.status(200).json(body)
-        }
+      }).then(userinfo => {
+        let { tokens } = req
+        req.userinfo = userinfo
+
+        return subs.subscribe({ userinfo, tokens })
+          ? res.redirect('/?subscribed=true')
+          : res.sendStatus(400)
+
+      }).catch(err => {
+        res.sendStatus(500)
       })
-    }
+  }
+})
+
+/**
+ * Unsubscribe
+ */
+app.get('/unsubscribe', function (req, res) {
+  if (req.query && req.query.email) {
+    let { query: { email } } = req
+
+    return subs.unsubscribe(email)
+      ? res.redirect('/?unsubscribed=true')
+      : res.sendStatus(404)
+  } else {
+    res.sendStatus(400)
   }
 })
 
