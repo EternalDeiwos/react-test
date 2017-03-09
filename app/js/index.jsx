@@ -18,16 +18,32 @@ injectTapEventPlugin()
 
 const style = {
   viewContainerStyle: {
-    flex: 1,
+    display: 'flex',
     backgroundColor: 'powderblue',
     justifyContent: 'center',
     alignItems: 'center',
+    textAlign: 'center',
+    //maxWidth: '50%', 
     flexDirection: 'column',
     borderColor: '#ddd',
     borderWidth: '2px',
-    width: '500px',
-    height: '100%',
+    // width: '500px',
+    //height: '100%',
+    maxHeight: '100%',
     position: 'relative'
+  },
+
+  viewParent:{
+    display: 'flex',
+    alignSelf: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: 'red',
+    minHeight: '500',
+    justifyContent: 'center', 
+    textAlign: 'center',
+    position: 'relative'
+    //maxWidth: '75%', 
   },
 
   contentContainerStyle: {},
@@ -35,11 +51,13 @@ const style = {
 }
 
 const ViewContainer = (props) => {
-  let { viewContainerStyle } = style
-
+  let { viewContainerStyle, viewParent } = style
+  
   return (
-    <div style={viewContainerStyle}>
-      {props.children}
+    <div style={viewParent}>
+      <div style={viewContainerStyle}>
+        {props.children}
+      </div>
     </div>
   )
 }
