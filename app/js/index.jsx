@@ -17,19 +17,31 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
 const style = {
-  contentContainerStyle: {
+  viewContainerStyle: {
+    flex: 1,
+    backgroundColor: 'powderblue',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row',
+    flexDirection: 'column',
     borderColor: '#ddd',
+    borderWidth: '2px',
+    width: '500px',
+    height: '100%',
     position: 'relative'
   },
-  appStyle: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
+
+  contentContainerStyle: {},
+  appStyle: {}
+}
+
+const ViewContainer = (props) => {
+  let { viewContainerStyle } = style
+
+  return (
+    <div style={viewContainerStyle}>
+      {props.children}
+    </div>
+  )
 }
 
 /**
@@ -37,55 +49,18 @@ const style = {
  */
 class App extends React.Component {
 
-  constructor (props) {
-    super(props)
-    this.state = { email: '' }
-  }
-
-  updateEmail (email) {
-    this.setState({ email })
-  }
-
-  test () {
-    let { email } = this.state
-    alert(email)
-
-    fetch('http://localhost:3000/subscribe', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      mode: 'no-cors',
-      body: JSON.stringify({email})
-    }).then(() => {
-      alert('success')
-    }).catch(err => {
-      console.log(err)
-    })
-  }
-
   render () {
     let { contentContainerStyle, appStyle } = style
 
     return (
-      <div style={appStyle}>
-        <AppBar title="HvZ Sign Up" />
-        <Card>
-          <CardText style={contentContainerStyle}>
-            <h1 style={{ fontFamily: 'Roboto' }}>Hello { this.props.name }!</h1>
-            <TextField
-              onChange={(ev, email) => this.updateEmail(email)}
-              errorText="This field is required and must be a valid email address."
-              floatingLabelText="Email"
-            />
-            <RaisedButton
-              label="Test"
-              onClick={() => this.test()}
-            />
-            <Timer />
-          </CardText>
-        </Card>
-      </div>
+      <ViewContainer>
+        <h1>Test!</h1>
+        <RaisedButton
+          label="Sign Up"
+          href="/login"
+        />
+        <Timer />
+      </ViewContainer>
     )
   }
 
@@ -96,8 +71,8 @@ class App extends React.Component {
  * @ignore
  */
 ReactDOM.render(
-  <MuiThemeProvider>
-    <App name="Greg" />
+  <MuiThemeProvider style={{flex: 1}}>
+    <App />
   </MuiThemeProvider>,
   document.getElementById('app')
 )
