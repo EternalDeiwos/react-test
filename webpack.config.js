@@ -33,6 +33,12 @@ module.exports = {
           'css-loader',
           'scss-loader'
         ]
+      },
+      {
+        test: /\.(png|jpg|jpeg|svg)$/,
+        loaders: [
+          'file-loader'
+        ]
       }
     ]
   },
