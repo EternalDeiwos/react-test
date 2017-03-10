@@ -18,7 +18,7 @@ class Timer extends React.Component {
   constructor (props) {
     super(props)
 
-    let target = moment("20170621", "YYYYMMDD")
+    let target = moment("2017062405+02:00", "YYYYMMDDHHZZ")
     let format = "DDD:HH:mm:ss"
 
     this.state = {
