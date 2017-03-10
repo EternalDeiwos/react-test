@@ -20,10 +20,6 @@ const style = {
     height: 96,
     padding: 24,
     fontSize: 16,
-  },
-  imgStyle: {
-    width: 48,
-    height: 48,
   }
 }
 
@@ -62,7 +58,7 @@ class SocialMedia extends React.Component {
         <LinkIconButton href={"https://snapchat.com"} iconClassName={'fa-snapchat-ghost'} />
         <LinkIconButton href={"https://www.instagram.com/rhodeshvz"} iconClassName={'fa-instagram'} />
         <LinkIconButton href={"https://discord.gg/CDRkAXF"} src={DiscordIcon} />
-        <LinkIconButton href={"https://www.facebook.com/groups/236555363064021"} iconClassName={'fa-facebook'} />
+        <LinkIconButton href={"https://www.facebook.com/groups/236555363064021"} iconClassName={'fa-facebook-official'} />
         <LinkIconButton href={"https://www.facebook.com/groups/236555363064021"} iconClassName={'fa-calendar'} />
       </SocialContainer>
     )
