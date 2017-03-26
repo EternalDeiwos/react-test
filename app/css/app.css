@@ -7,5 +7,9 @@ html, body {
   font-family: Roboto;
   flex-direction: row;
   align-items: center;
-  background-image: url('../img/bgmain.png');
+  background-color: #000;
+  background-image: url('../img/bgmain2.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 'cover';
 }

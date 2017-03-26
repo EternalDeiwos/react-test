@@ -7,12 +7,8 @@ const timerStyle = {
   textAlign: 'center',
   fontSize: '96px',
   width: '600px',
-  padding: '20px',
-  margin: '20px',
   fontFamily: 'EndlessBlue',
-  fontSize: '96pt',
-  borderStyle: 'solid',
-  borderWidth: '5px'
+  fontSize: '96pt'
 }
 
 class Timer extends React.Component {

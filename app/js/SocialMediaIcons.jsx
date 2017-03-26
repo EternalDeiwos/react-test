@@ -8,7 +8,6 @@ import React from 'react'
 import { SocialContainer, ViewContainer } from './View.jsx'
 import IconButton from 'material-ui/IconButton';
 
-import SocialBackground from '../img/socialmediabg.png'
 import SnapchatIcon from '../img/snapchat-bespoke.png'
 import InstagramIcon from '../img/insta-bespoke.png'
 import DiscordIcon from '../img/discord-bespoke.png'

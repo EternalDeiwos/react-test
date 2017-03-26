@@ -35,7 +35,7 @@
   },
   "scripts": {
     "start": "npm run webpack && node server.js",
-    "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --host 0.0.0.0",
     "webpack": "./node_modules/webpack/bin/webpack.js -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

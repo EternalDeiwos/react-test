@@ -1,3 +1,6 @@
 Endless Blue is the timer font (92pt.)
 MeathFLF is the font used on the signup box (All caps, 36pt.) and the "Join the Following" (51pt.) box
 Ugly Qua is the font used for the "It begins in..." (40pt.) text. 
+
+Button colour: #757575
+
