@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'UglyQua';
+    src: url('../fonts/UglyQua.eot');
+    src: url('../fonts/UglyQua.eot') format('embedded-opentype'),
+         url('../fonts/UglyQua.woff2') format('woff2'),
+         url('../fonts/UglyQua.woff') format('woff'),
+         url('../fonts/UglyQua.ttf') format('truetype'),
+         url('../fonts/UglyQua.svg#UglyQua') format('svg');
+}

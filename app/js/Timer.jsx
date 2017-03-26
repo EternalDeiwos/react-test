@@ -9,6 +9,8 @@ const timerStyle = {
   width: '600px',
   padding: '20px',
   margin: '20px',
+  fontFamily: 'EndlessBlue',
+  fontSize: '96pt',
   borderStyle: 'solid',
   borderWidth: '5px'
 }

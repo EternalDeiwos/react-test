@@ -1,0 +1,11 @@
+html, body {
+  margin: 0;
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  min-width: 100vw;
+  font-family: Roboto;
+  flex-direction: row;
+  align-items: center;
+  background-image: url('../img/bgmain.png');
+}

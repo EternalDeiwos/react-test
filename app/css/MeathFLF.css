@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'MeathFLF';
+    src: url('../fonts/MeathFLF.eot');
+    src: url('../fonts/MeathFLF.eot') format('embedded-opentype'),
+         url('../fonts/MeathFLF.woff2') format('woff2'),
+         url('../fonts/MeathFLF.woff') format('woff'),
+         url('../fonts/MeathFLF.ttf') format('truetype'),
+         url('../fonts/MeathFLF.svg#MeathFLF') format('svg');
+}

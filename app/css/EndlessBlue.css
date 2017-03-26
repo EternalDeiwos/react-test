@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'EndlessBlue';
+    src: url('../fonts/EndlessBlue.eot');
+    src: url('../fonts/EndlessBlue.eot') format('embedded-opentype'),
+         url('../fonts/EndlessBlue.woff2') format('woff2'),
+         url('../fonts/EndlessBlue.woff') format('woff'),
+         url('../fonts/EndlessBlue.ttf') format('truetype'),
+         url('../fonts/EndlessBlue.svg#EndlessBlue') format('svg');
+}

@@ -21,9 +21,8 @@ const style = {
     alignItems: 'flex-end',
     flexDirection: 'row',
     minHeight: '20vh',
-    paddingTop: '20px',
-    // backgroundColor: 'powderblue',
-    position: 'relative'
+    position: 'relative',
+    padding: 30
   },
 
   viewParentStyle: {

@@ -7,7 +7,13 @@
 import React from 'react'
 import { SocialContainer, ViewContainer } from './View.jsx'
 import IconButton from 'material-ui/IconButton';
-import DiscordIcon from '../img/fa-discord-o.png'
+
+import SocialBackground from '../img/socialmediabg.png'
+import SnapchatIcon from '../img/snapchat-bespoke.png'
+import InstagramIcon from '../img/insta-bespoke.png'
+import DiscordIcon from '../img/discord-bespoke.png'
+import FacebookIcon from '../img/fb-bespoke.png'
+import GroupsIcon from '../img/grp-bespoke.png'
 
 const style = {
   iconStyle: {
@@ -55,11 +61,11 @@ class SocialMedia extends React.Component {
   render () {
     return (
       <SocialContainer>
-        <LinkIconButton href={"http://www.snapchat.com/add/ru.hvz"} iconClassName={'fa-snapchat-ghost'} />
-        <LinkIconButton href={"https://www.instagram.com/rhodeshvz"} iconClassName={'fa-instagram'} />
+        <LinkIconButton href={"http://www.snapchat.com/add/ru.hvz"} src={SnapchatIcon} />
+        <LinkIconButton href={"https://www.instagram.com/rhodeshvz"} src={InstagramIcon} />
         <LinkIconButton href={"https://discord.gg/CDRkAXF"} src={DiscordIcon} />
-        <LinkIconButton href={"https://www.facebook.com/groups/236555363064021"} iconClassName={'fa-facebook-official'} />
-        <LinkIconButton href={"https://www.facebook.com/groups/236555363064021"} iconClassName={'fa-calendar'} />
+        <LinkIconButton href={"https://www.facebook.com/groups/236555363064021"} src={FacebookIcon} />
+        <LinkIconButton href={"https://www.facebook.com/groups/236555363064021"} src={GroupsIcon} />
       </SocialContainer>
     )
   }
