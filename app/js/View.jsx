@@ -22,7 +22,6 @@ const style = {
     flexDirection: 'row',
     minHeight: '20vh',
     position: 'relative',
-    padding: 30
   },
 
   viewParentStyle: {

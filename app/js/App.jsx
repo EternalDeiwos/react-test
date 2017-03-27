@@ -22,8 +22,8 @@ injectTapEventPlugin()
 const style = {
   flavourTextStyle: {
     position: 'absolute',
-    top: 30,
-    left: -30,
+    top: 5,
+    left: -20,
     fontFamily: 'UglyQua',
     fontSize: '36pt'
   },
@@ -41,7 +41,7 @@ const style = {
   },
   buttonContainerStyle: {
     position: 'absolute',
-    bottom: 50,
+    bottom: 30,
   },
   buttonTextStyle: {
     fontFamily: 'UglyQua',
@@ -55,6 +55,14 @@ const style = {
     height: null,
     width: '300px',
     boxShadow: '2px 2px 2px 1px rgba(0, 0, 0, 0.2)'
+  },
+  mainContainerStyle: {
+    height: '100vh',
+    width: '100vw',
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
   }
 }
 
@@ -103,9 +111,10 @@ class Countdown extends React.Component {
 
 const App = (props) => {
   let { location: { query } } = props
+  let { mainContainerStyle } = style
 
   return (
-    <div>
+    <div style={mainContainerStyle}>
       <View>
         <Countdown query={query} />
       </View>
