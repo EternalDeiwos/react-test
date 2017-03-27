@@ -41,7 +41,7 @@ const style = {
   },
   buttonContainerStyle: {
     position: 'absolute',
-    bottom: 30,
+    bottom: 0,
   },
   buttonTextStyle: {
     fontFamily: 'UglyQua',
@@ -52,7 +52,7 @@ const style = {
     borderStyle: 'solid',
     borderWidth: '2px',
     borderColor: 'black',
-    height: null,
+    height: '50px',
     width: '300px',
     boxShadow: '2px 2px 2px 1px rgba(0, 0, 0, 0.2)'
   },
