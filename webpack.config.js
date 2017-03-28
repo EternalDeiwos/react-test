@@ -52,6 +52,12 @@ module.exports = {
         loaders: [
           'file-loader'
         ]
+      },
+      {
+        test: /\.ico$/,
+        loaders: [
+          'file-loader?name=[name].[ext]'
+        ]
       }
     ]
   },
