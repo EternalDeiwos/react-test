@@ -13,3 +13,13 @@ html, body {
   background-repeat: no-repeat;
   background-size: 'cover';
 }
+
+@media only screen and (min-width: 320px) and (max-width: 1000px) {
+  html, body {
+    background-color: #000;
+    background-image: url('../img/bgmobile.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 'cover';
+  }
+}
