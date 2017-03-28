@@ -38,3 +38,4 @@ i.node_repl_history
 subs
 dist
 config.json
+*.xcf
