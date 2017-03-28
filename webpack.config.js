@@ -48,13 +48,13 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|jpeg|gif)$/,
+        test: /favicon\.$/,
         loaders: [
-          'file-loader'
+          'url-loader'
         ]
       },
       {
-        test: /\.ico$/,
+        test: /\.(png|jpg|jpeg|gif)$/,
         loaders: [
           'file-loader?name=[name].[ext]'
         ]
@@ -65,6 +65,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.ejs',
+      favicon: null
     })
   ]
 }
