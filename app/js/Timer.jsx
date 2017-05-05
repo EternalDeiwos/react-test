@@ -4,7 +4,7 @@ import moment from 'moment'
 import React from 'react'
 
 const timerStyle = {
-  textAlign: 'center',
+  alignContent: 'center',
   fontSize: '96px',
   width: '600px',
   fontFamily: 'EndlessBlue',
